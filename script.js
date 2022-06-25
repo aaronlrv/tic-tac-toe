@@ -13,9 +13,16 @@ let moduleFunctions = (function() {
 })() 
 
 
+let person = (name,choice) => {
+    return {
+        name,choice
+    }
+}
 
-moduleFunctions.gameBoard()
 
+let player1 = person("kamyaa", "x")
+console.log(player1.name)
+console.log(player1.choice)
 
 
 
