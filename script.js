@@ -28,7 +28,7 @@ const gameBoard = (()=> {
      }
 })()
 
-const displayController= (() => {
+let displayController= (() => {
         let player1Name = player1.name
         let player1Choice = player1.choice
         let player2Name = player2.name
@@ -47,9 +47,21 @@ const displayController= (() => {
     })()
 
 
+let gameFlow = (() => {
 
+    let turns = (() => {
 
+    })()
 
+    let winCondition = (() => {
+
+    })()
+
+    return{
+        turns, winCondition
+    }
+
+})()
 
 
 
