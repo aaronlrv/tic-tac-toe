@@ -1,5 +1,7 @@
 let playerHeader = document.querySelector(".player")
 let playerChoice = document.querySelector(".choice")
+let player2Header = document.querySelector(".player2")
+let player2ChoiceSlot = document.querySelector(".choice2")
 
 
 let person = (name,choice) => {
@@ -8,8 +10,8 @@ let person = (name,choice) => {
     }
 }
 
-let player1 = person("kamyaa", "x")
-let player2 = person("aaron", "o")
+let player1 = person("asdf", "x")
+let player2 = person("asjdasd", "o")
 console.log(player1.name)
 console.log(player1.choice)
 console.log(player2.choice)
@@ -35,6 +37,8 @@ const displayController= (() => {
         let displayNames = (() => {
             playerHeader.textContent = player1Name
             playerChoice.textContent = player1Choice
+            player2Header.textContent = player2Name
+            player2ChoiceSlot.textContent = player2Choice
         })()
 
         return{
