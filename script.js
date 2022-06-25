@@ -1,16 +1,5 @@
-let moduleFunctions = (function() {
-
-    function gameBoard (){
-        let board = ["x","x","x",
-                    "x", "x", "x",
-                    "x", "x" ,"x" ]
-        console.log(board)
-    }
-
-    return {
-        gameBoard
-    }
-})() 
+let playerHeader = document.querySelector(".player")
+let playerChoice = document.querySelector(".choice")
 
 
 let person = (name,choice) => {
@@ -19,10 +8,45 @@ let person = (name,choice) => {
     }
 }
 
-
 let player1 = person("kamyaa", "x")
+let player2 = person("aaron", "o")
 console.log(player1.name)
 console.log(player1.choice)
+console.log(player2.choice)
+console.log(player2.name)
+
+const gameBoard = (()=> {
+    let board = ["x","x","x",
+                "x", "x", "x",
+                "x", "x" ,"x" ]
+     console.log(board)
+    
+     return{
+        board
+     }
+})()
+
+const displayController= (() => {
+        let player1Name = player1.name
+        let player1Choice = player1.choice
+        let player2Name = player2.name
+        let player2Choice = player2.choice
+
+        let displayNames = (() => {
+            playerHeader.textContent = player1Name
+            playerChoice.textContent = player1Choice
+        })()
+
+        return{
+            displayNames
+        }
+    })()
+
+
+
+
+
+
 
 
 
