@@ -2,6 +2,8 @@ let playerHeader = document.querySelector(".player")
 let playerChoice = document.querySelector(".choice")
 let player2Header = document.querySelector(".player2")
 let player2ChoiceSlot = document.querySelector(".choice2")
+let grid = document.querySelector(".grid")
+let cell = document.querySelectorAll(".cell")
 
 
 let person = (name,choice) => {
@@ -18,13 +20,22 @@ console.log(player2.choice)
 console.log(player2.name)
 
 const gameBoard = (()=> {
-    let board = ["x","x","x",
-                "x", "x", "x",
-                "x", "x" ,"x" ]
+    let board = ["o","x","x",
+                "x", "o", "x",
+                "o", "x" ,"o" ]
      console.log(board)
+
+     let displayBoard = (() => {
+        for (i = 0; i < 9; i++){
+            cell[i].textContent = board[i]
+        }
+
+    })()
+    
     
      return{
-        board
+        board,
+        displayBoard
      }
 })()
 
@@ -41,12 +52,10 @@ let displayController= (() => {
             player2ChoiceSlot.textContent = player2Choice
         })()
 
-        let displayBoard = (()  => {
-        
-        })()
 
         return{
             displayNames
+            
         }
     })()
 
@@ -66,6 +75,7 @@ let gameFlow = (() => {
     }
 
 })()
+
 
 
 
