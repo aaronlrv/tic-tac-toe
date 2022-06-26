@@ -4,10 +4,11 @@
     margin: 0;
 }
 
-
 div {
     border: 1px solid blue;
 }
+
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 250px);
@@ -20,4 +21,11 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200px;
 }
