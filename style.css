@@ -5,4 +5,19 @@
 }
 
 
-
+div {
+    border: 1px solid blue;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-template-rows: repeat(3, 250px);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+  
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
