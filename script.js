@@ -10,8 +10,8 @@ let person = (name,choice) => {
     }
 }
 
-let player1 = person("asdf", "x")
-let player2 = person("asjdasd", "o")
+let player1 = person("kamyaa", "x")
+let player2 = person("aaron", "o")
 console.log(player1.name)
 console.log(player1.choice)
 console.log(player2.choice)
@@ -39,6 +39,10 @@ let displayController= (() => {
             playerChoice.textContent = player1Choice
             player2Header.textContent = player2Name
             player2ChoiceSlot.textContent = player2Choice
+        })()
+
+        let displayBoard = (()  => {
+        
         })()
 
         return{
