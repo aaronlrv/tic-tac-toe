@@ -1,9 +1,12 @@
+
+
 let playerHeader = document.querySelector(".player")
 let playerChoice = document.querySelector(".choice")
 let player2Header = document.querySelector(".player2")
 let player2ChoiceSlot = document.querySelector(".choice2")
 let grid = document.querySelector(".grid")
 let cell = document.querySelectorAll(".cell")
+
 
 
 let person = (name,choice) => {
@@ -20,22 +23,97 @@ console.log(player2.choice)
 console.log(player2.name)
 
 const gameBoard = (()=> {
-    let board = ["o","x","x",
-                "x", "o", "x",
-                "o", "x" ,"o" ]
+    let board = [
+        {
+          id: '1-1',
+          value: ''
+        },
+        {
+          id: '1-2',
+          value: ''
+        },
+        {
+          id: '1-3',
+          value: ''
+        },
+        {
+          id: '2-1',
+          value: ''
+        },
+        {
+          id: '2-2',
+          value: ''
+        },
+        {
+          id: '2-3',
+          value: ''
+        },
+        {
+          id: '3-1',
+          value: ''
+        },
+        {
+          id: '3-2',
+          value: ''
+        },
+        {
+          id: '3-3',
+          value: ''
+        },
+        ]
      console.log(board)
 
-     let displayBoard = (() => {
-        for (i = 0; i < 9; i++){
-            cell[i].textContent = board[i]
-        }
+     let turn = 1;
+      let boardValue = undefined
 
+     let displayBoard = (() => {
+        grid.addEventListener("click", (e) => {
+            console.log(e.target)
+
+
+            let click = e.target
+            let clickedCell = click.getAttribute("data-index")
+            console.log(clickedCell)
+            console.log()
+
+            
+
+
+
+          
+
+
+            isEqual = (obj) => obj.id === clickedCell
+            console.log(board.findIndex (isEqual) + "Cell Index" )
+             let arrayIndex = board.findIndex (isEqual)
+             console.log(arrayIndex)
+
+             if (e.target.textContent === "o" || e.target.textContent === "x"){
+              alert ("User has already placed a choice there!")
+             } else {
+              if (turn === 1) {
+                boardValue = "x"
+                turn = 2;
+            } else  {
+                boardValue = "o"            
+                turn = 1;
+            }
+  
+             board[arrayIndex].value = boardValue 
+             }
+            
+             for (let cell of board) {
+                document.querySelector(`[data-index="${cell.id}"]`).textContent = cell.value
+         }
+
+
+        })
     })()
     
     
      return{
         board,
-        displayBoard
+        displayBoard,
      }
 })()
 
@@ -75,7 +153,6 @@ let gameFlow = (() => {
     }
 
 })()
-
 
 
 
