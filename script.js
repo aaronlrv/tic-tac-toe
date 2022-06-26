@@ -1,5 +1,3 @@
-
-
 let playerHeader = document.querySelector(".player")
 let playerChoice = document.querySelector(".choice")
 let player2Header = document.querySelector(".player2")
@@ -79,7 +77,6 @@ const gameBoard = (()=> {
             
 
 
-
           
 
 
@@ -91,17 +88,20 @@ const gameBoard = (()=> {
              if (e.target.textContent === "o" || e.target.textContent === "x"){
               alert ("User has already placed a choice there!")
              } else {
-              if (turn === 1) {
-                boardValue = "x"
-                turn = 2;
+              
+
+            if (turn === 1) {
+              boardValue = "x"
+              turn = 2;
             } else  {
-                boardValue = "o"            
-                turn = 1;
+              boardValue = "o"            
+              turn = 1;
             }
-  
              board[arrayIndex].value = boardValue 
+
              }
             
+             console.log(e.target.value)
              for (let cell of board) {
                 document.querySelector(`[data-index="${cell.id}"]`).textContent = cell.value
          }
@@ -139,10 +139,6 @@ let displayController= (() => {
 
 
 let gameFlow = (() => {
-
-    let turns = (() => {
-
-    })()
 
     let winCondition = (() => {
 
