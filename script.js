@@ -7,11 +7,15 @@ let cell = document.querySelectorAll(".cell")
 
 
 
+
+
+
 let person = (name,choice) => {
     return {
         name,choice
     }
 }
+
 
 let player1 = person("kamyaa", "x")
 let player2 = person("aaron", "o")
@@ -61,6 +65,7 @@ const gameBoard = (()=> {
         ]
      console.log(board)
 
+
      let turn = 1;
       let boardValue = undefined
 
@@ -68,17 +73,16 @@ const gameBoard = (()=> {
         grid.addEventListener("click", (e) => {
             console.log(e.target)
 
+            if (gameIsFinished()) {
+              console.log('game is finished')
+              return
+            }
+
 
             let click = e.target
             let clickedCell = click.getAttribute("data-index")
             console.log(clickedCell)
             console.log()
-
-            
-
-
-          
-
 
             isEqual = (obj) => obj.id === clickedCell
             console.log(board.findIndex (isEqual) + "Cell Index" )
@@ -88,8 +92,6 @@ const gameBoard = (()=> {
              if (e.target.textContent === "o" || e.target.textContent === "x"){
               alert ("User has already placed a choice there!")
              } else {
-              
-
             if (turn === 1) {
               boardValue = "x"
               turn = 2;
@@ -97,6 +99,7 @@ const gameBoard = (()=> {
               boardValue = "o"            
               turn = 1;
             }
+
              board[arrayIndex].value = boardValue 
 
              }
@@ -109,11 +112,12 @@ const gameBoard = (()=> {
 
         })
     })()
-    
+
     
      return{
         board,
         displayBoard,
+        gamef
      }
 })()
 
@@ -137,15 +141,73 @@ let displayController= (() => {
         }
     })()
 
+    let gameFlow = (() => {
 
-let gameFlow = (() => {
+      function gameIsFinished() {
+        // initializing board
+        let board = []
+        let tempIndex = 0
+        let tempArray = []
+        document.querySelectorAll('.cell').forEach(element => {
+          tempIndex ++
+          tempArray.push(element.textContent)
+          if (tempIndex > 2) {
+            tempIndex = 0
+            board.push(tempArray)
+            tempArray = []
+          }
+        })
 
-    let winCondition = (() => {
-
-    })()
+        console.log("Winning Board" + tempArray)
+      
+        // tracking vars
+        let os = 0
+        let xs = 0
+      
+        // checking on rows
+        let has3 = false
+        board.forEach(row => {
+          row.forEach(elem => {
+            if (elem == 'o') os++
+            if (elem == 'x') xs++
+          })
+          if (os > 2 || xs > 2) {
+            has3 = true
+          } xs = 0; os = 0
+        })
+      
+        // checking on columns
+        for (let i = 0; i < 3; i++) {
+          for (let l = 0; l < 3; l++) {
+            if (board[l][i] == 'o') os++
+            if (board[l][i] == 'x') xs++
+          }
+          if (os > 2 || xs > 2) {
+            has3 = true
+          } xs = 0; os = 0
+        }
+      
+        // checking diagonal
+        for (let i = 0; i < 3; i++) {
+          if (board[i][i] == 'o') os++
+          if (board[i][i] == 'x') xs++
+        }
+        if (os > 2 || xs > 2) {
+          has3 = true
+        } xs = 0; os = 0
+        for (let i = 0; i < 3; i++) {
+          if (board[i][2-i] == 'o') os++
+          if (board[i][2-i] == 'x') xs++
+        }
+        if (os > 2 || xs > 2) {
+          has3 = true
+        } xs = 0; os = 0
+      
+        if (has3) return true
+      }
 
     return{
-        turns, winCondition
+       gameIsFinished
     }
 
 })()
