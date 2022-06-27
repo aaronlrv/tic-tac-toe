@@ -6,10 +6,6 @@ let grid = document.querySelector(".grid")
 let cell = document.querySelectorAll(".cell")
 
 
-
-
-
-
 let person = (name,choice) => {
     return {
         name,choice
