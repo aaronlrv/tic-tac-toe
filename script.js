@@ -189,7 +189,6 @@ const gameBoard = (()=> {
      return{
         board,
         displayBoard,
-        gamef
      }
 })()
 
