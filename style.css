@@ -4,17 +4,15 @@
     margin: 0;
 }
 
-div {
-    border: 1px solid blue;
-}
-
-
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 250px);
     grid-template-rows: repeat(3, 250px);
     gap: 0px 0px;
     grid-auto-flow: row;
+    border: 2px solid black;
+    box-shadow: 3px 5px 5px grey;
+
   }
   
 .container {
@@ -28,4 +26,6 @@ div {
     justify-content: center;
     align-items: center;
     font-size: 200px;
+    border: 2px solid black;
+
 }
