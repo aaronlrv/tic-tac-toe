@@ -4,6 +4,8 @@ let player2Header = document.querySelector(".player2")
 let player2ChoiceSlot = document.querySelector(".choice2")
 let grid = document.querySelector(".grid")
 let cell = document.querySelectorAll(".cell")
+let player1name = document.getElementById("name").value
+let player2name = document.getElementById("name2").value
 
 
 let person = (name,choice) => {
@@ -13,8 +15,8 @@ let person = (name,choice) => {
 }
 
 
-let player1 = person("kamyaa", "x")
-let player2 = person("aaron", "o")
+let player1 = person(player1name, "x")
+let player2 = person(player2name, "o")
 console.log(player1.name)
 console.log(player1.choice)
 console.log(player2.choice)
