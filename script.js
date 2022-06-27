@@ -24,6 +24,78 @@ console.log(player1.choice)
 console.log(player2.choice)
 console.log(player2.name)
 
+let gameFlow = (() => {
+
+  function gameIsFinished() {
+    // initializing board
+    let board = []
+    let tempIndex = 0
+    let tempArray = []
+    document.querySelectorAll('.cell').forEach(element => {
+      tempIndex ++
+      tempArray.push(element.textContent)
+      if (tempIndex > 2) {
+        tempIndex = 0
+        board.push(tempArray)
+        tempArray = []
+      }
+    })
+
+    console.log("Winning Board" + tempArray)
+  
+    // tracking vars
+    let os = 0
+    let xs = 0
+  
+    // checking on rows
+    let has3 = false
+    board.forEach(row => {
+      row.forEach(elem => {
+        if (elem == 'o') os++
+        if (elem == 'x') xs++
+      })
+      if (os > 2 || xs > 2) {
+        has3 = true
+      } xs = 0; os = 0
+    })
+  
+    // checking on columns
+    for (let i = 0; i < 3; i++) {
+      for (let l = 0; l < 3; l++) {
+        if (board[l][i] == 'o') os++
+        if (board[l][i] == 'x') xs++
+      }
+      if (os > 2 || xs > 2) {
+        has3 = true
+      } xs = 0; os = 0
+    }
+  
+    // checking diagonal
+    for (let i = 0; i < 3; i++) {
+      if (board[i][i] == 'o') os++
+      if (board[i][i] == 'x') xs++
+    }
+    if (os > 2 || xs > 2) {
+      has3 = true
+    } xs = 0; os = 0
+    for (let i = 0; i < 3; i++) {
+      if (board[i][2-i] == 'o') os++
+      if (board[i][2-i] == 'x') xs++
+    }
+    if (os > 2 || xs > 2) {
+      has3 = true
+    } xs = 0; os = 0
+  
+    if (has3) return true
+  }
+
+return{
+   gameIsFinished
+}
+
+})()
+
+
 const gameBoard = (()=> {
     let board = [
         {
@@ -73,7 +145,7 @@ const gameBoard = (()=> {
         grid.addEventListener("click", (e) => {
             console.log(e.target)
 
-            if (gameIsFinished()) {
+            if (gameFlow.gameIsFinished()) {
               console.log('game is finished')
               return
             }
@@ -141,76 +213,6 @@ let displayController= (() => {
         }
     })()
 
-    let gameFlow = (() => {
-
-      function gameIsFinished() {
-        // initializing board
-        let board = []
-        let tempIndex = 0
-        let tempArray = []
-        document.querySelectorAll('.cell').forEach(element => {
-          tempIndex ++
-          tempArray.push(element.textContent)
-          if (tempIndex > 2) {
-            tempIndex = 0
-            board.push(tempArray)
-            tempArray = []
-          }
-        })
-
-        console.log("Winning Board" + tempArray)
-      
-        // tracking vars
-        let os = 0
-        let xs = 0
-      
-        // checking on rows
-        let has3 = false
-        board.forEach(row => {
-          row.forEach(elem => {
-            if (elem == 'o') os++
-            if (elem == 'x') xs++
-          })
-          if (os > 2 || xs > 2) {
-            has3 = true
-          } xs = 0; os = 0
-        })
-      
-        // checking on columns
-        for (let i = 0; i < 3; i++) {
-          for (let l = 0; l < 3; l++) {
-            if (board[l][i] == 'o') os++
-            if (board[l][i] == 'x') xs++
-          }
-          if (os > 2 || xs > 2) {
-            has3 = true
-          } xs = 0; os = 0
-        }
-      
-        // checking diagonal
-        for (let i = 0; i < 3; i++) {
-          if (board[i][i] == 'o') os++
-          if (board[i][i] == 'x') xs++
-        }
-        if (os > 2 || xs > 2) {
-          has3 = true
-        } xs = 0; os = 0
-        for (let i = 0; i < 3; i++) {
-          if (board[i][2-i] == 'o') os++
-          if (board[i][2-i] == 'x') xs++
-        }
-        if (os > 2 || xs > 2) {
-          has3 = true
-        } xs = 0; os = 0
-      
-        if (has3) return true
-      }
-
-    return{
-       gameIsFinished
-    }
-
-})()
 
 
 
